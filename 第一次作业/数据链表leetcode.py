@@ -63,3 +63,24 @@ class Solution(object):
             if p1==p2:#存在环则必然会出现相等
                 return True
         return False
+
+"""leetcode 第23题 合并k个有序链表"""
+class ListNode(object):
+    def __init__(self,x):
+        self.val = x
+        self.next = None
+class Solution(object):
+    def mergeKLists(self,lists):
+        if not lists:
+            return None
+        res = []
+        for a in lists:
+            res.append(a.val)
+            a = a.next
+         res.sort()
+        p = ListNode(0)
+        q = p
+        for i in range(0,len(res)):
+            q.next = ListNode(res[i])
+            q = q.next
+         return p.next
